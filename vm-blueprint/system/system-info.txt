@@ -1,0 +1,216 @@
+=== OS Release ===
+PRETTY_NAME="Ubuntu 24.04.3 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.3 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+=== Kernel ===
+Linux mininet-vm 6.8.0-100-generic #100-Ubuntu SMP PREEMPT_DYNAMIC Tue Jan 13 16:40:06 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== Uptime ===
+ 18:19:10 up  1:35,  1 user,  load average: 0.27, 2.84, 5.70
+
+=== CPU ===
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Vendor ID:                               GenuineIntel
+Model name:                              13th Gen Intel(R) Core(TM) i7-13700H
+BIOS Model name:                           CPU @ 0.0GHz
+BIOS CPU family:                         0
+CPU family:                              6
+Model:                                   186
+Thread(s) per core:                      1
+Core(s) per socket:                      2
+Socket(s):                               1
+Stepping:                                2
+BogoMIPS:                                5836.79
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 avx2 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               96 KiB (2 instances)
+L1i cache:                               64 KiB (2 instances)
+L2 cache:                                2.5 MiB (2 instances)
+L3 cache:                                48 MiB (2 instances)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0,1
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Indirect target selection: Vulnerable
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Reg file data sampling:    Mitigation; Clear Register File
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Vulnerable
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+
+=== Memorie ===
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       357Mi       1.4Gi       736Ki       318Mi       1.6Gi
+Swap:             0B          0B          0B
+
+=== Discuri ===
+NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0  20G  0 disk 
+├─sda1   8:1    0   1M  0 part 
+└─sda2   8:2    0  20G  0 part /
+Filesystem     Type    Size  Used Avail Use% Mounted on
+tmpfs          tmpfs   197M  724K  197M   1% /run
+/dev/sda2      ext4     20G  3.4G   16G  18% /
+tmpfs          tmpfs   984M     0  984M   0% /dev/shm
+tmpfs          tmpfs   5.0M     0  5.0M   0% /run/lock
+SHARED         vboxsf  1.9T  879G  984G  48% /media/sf_SHARED
+tmpfs          tmpfs   197M   12K  197M   1% /run/user/1000
+
+=== Timezone ===
+               Local time: Tue 2026-02-10 18:19:10 UTC
+           Universal time: Tue 2026-02-10 18:19:10 UTC
+                 RTC time: Tue 2026-02-10 16:45:28
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: inactive
+          RTC in local TZ: no
+
+=== Locale ===
+LANG=C.UTF-8
+LANGUAGE=
+LC_CTYPE="C.UTF-8"
+LC_NUMERIC="C.UTF-8"
+LC_TIME="C.UTF-8"
+LC_COLLATE="C.UTF-8"
+LC_MONETARY="C.UTF-8"
+LC_MESSAGES="C.UTF-8"
+LC_PAPER="C.UTF-8"
+LC_NAME="C.UTF-8"
+LC_ADDRESS="C.UTF-8"
+LC_TELEPHONE="C.UTF-8"
+LC_MEASUREMENT="C.UTF-8"
+LC_IDENTIFICATION="C.UTF-8"
+LC_ALL=
+
+=== Hostname ===
+ Static hostname: mininet-vm
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 6814a346e86845a5868ee606dcb7fa99
+         Boot ID: 2d9be8ebc5344b3db34b3d3974c75c45
+  Virtualization: oracle
+Operating System: Ubuntu 24.04.3 LTS
+          Kernel: Linux 6.8.0-100-generic
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox
+Firmware Version: VirtualBox
+   Firmware Date: Fri 2006-12-01
+    Firmware Age: 19y 2month 1w 4d
+
+=== Kernel Modules Loaded ===
+Module                  Size  Used by
+xt_conntrack           12288  1
+xt_MASQUERADE          16384  1
+bridge                425984  0
+stp                    12288  1 bridge
+llc                    16384  2 bridge,stp
+xt_set                 20480  0
+ip_set                 61440  1 xt_set
+nft_chain_nat          12288  5
+xt_addrtype            12288  4
+nft_compat             20480  6
+nf_tables             376832  71 nft_compat,nft_chain_nat
+xfrm_user              61440  1
+xfrm_algo              16384  1 xfrm_user
+overlay               212992  0
+intel_rapl_msr         20480  0
+intel_rapl_common      40960  1 intel_rapl_msr
+intel_uncore_frequency_common    16384  0
+intel_pmc_core        118784  0
+intel_vsec             20480  1 intel_pmc_core
+pmt_telemetry          16384  1 intel_pmc_core
+pmt_class              12288  1 pmt_telemetry
+rapl                   20480  0
+vmwgfx                446464  0
+vboxsf                 45056  1
+drm_ttm_helper         12288  1 vmwgfx
+ttm                   110592  2 vmwgfx,drm_ttm_helper
+i2c_piix4              32768  0
+vboxguest              57344  2 vboxsf
+openvswitch           217088  0
+nsh                    12288  1 openvswitch
+nf_conncount           24576  1 openvswitch
+nf_nat                 61440  3 openvswitch,nft_chain_nat,xt_MASQUERADE
+nf_conntrack          196608  5 xt_conntrack,nf_nat,openvswitch,nf_conncount,xt_MASQUERADE
+nf_defrag_ipv6         24576  1 nf_conntrack
+nf_defrag_ipv4         12288  1 nf_conntrack
+joydev                 32768  0
+input_leds             12288  0
+serio_raw              20480  0
+mac_hid                12288  0
+cfg80211             1355776  0
+binfmt_misc            24576  1
+sch_fq_codel           24576  2
+dm_multipath           45056  0
+efi_pstore             12288  0
+nfnetlink              20480  6 nft_compat,nf_tables,ip_set
+dmi_sysfs              24576  0
+ip_tables              32768  0
+x_tables               65536  6 xt_conntrack,nft_compat,xt_addrtype,xt_set,ip_tables,xt_MASQUERADE
+autofs4                57344  2
+btrfs                2052096  0
+blake2b_generic        24576  0
+raid10                 73728  0
+raid456               192512  0
+async_raid6_recov      20480  1 raid456
+async_memcpy           16384  2 raid456,async_raid6_recov
+async_pq               20480  2 raid456,async_raid6_recov
+async_xor              16384  3 async_pq,raid456,async_raid6_recov
+async_tx               16384  5 async_pq,async_memcpy,async_xor,raid456,async_raid6_recov
+xor                    20480  2 async_xor,btrfs
+raid6_pq              126976  4 async_pq,btrfs,raid456,async_raid6_recov
+libcrc32c              12288  6 nf_conntrack,nf_nat,openvswitch,btrfs,nf_tables,raid456
+raid1                  57344  0
+raid0                  24576  0
+crct10dif_pclmul       12288  1
+crc32_pclmul           12288  0
+hid_generic            12288  0
+usbhid                 77824  0
+polyval_clmulni        12288  0
+polyval_generic        12288  1 polyval_clmulni
+vga16fb                32768  0
+ghash_clmulni_intel    16384  0
+psmouse               217088  0
+vgastate               20480  1 vga16fb
+hid                   180224  2 usbhid,hid_generic
+sha256_ssse3           32768  0
+ahci                   49152  1
+e1000                 180224  0
+sha1_ssse3             32768  0
+video                  77824  0
+libahci                53248  1 ahci
+pata_acpi              12288  0
+wmi                    28672  1 video
+aesni_intel           356352  0
+crypto_simd            16384  1 aesni_intel
+cryptd                 24576  2 crypto_simd,ghash_clmulni_intel
+
+=== Boot Parameters ===
+BOOT_IMAGE=/boot/vmlinuz-6.8.0-100-generic root=UUID=de8e79f6-30a4-4823-baa1-df28f3ca9b5f ro
