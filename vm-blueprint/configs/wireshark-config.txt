@@ -1,0 +1,4 @@
+=== Wireshark Dumpcap Capabilities ===
+/usr/bin/dumpcap cap_net_admin,cap_net_raw=eip
+=== Wireshark Group ===
+wireshark:x:107:stud

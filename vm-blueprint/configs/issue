@@ -1,0 +1,21 @@
+[1;36m
+==========================================================
+       WELCOME to NETWORKING SEMINARS!
+==========================================================
+[0m
+[1;33mACCESS INSTRUCTIONS:[0m
+ 1. Minimize this window (do not close it).
+ 2. Open Putty / PowerShell on your host system.
+ 3. Connect to:
+      IP:   [1;32m127.0.0.1[0m
+      Port: [1;32m2222[0m
+      User: [1;32mstud[0m
+      Pass: [1;32mstud[0m
+
+[1;31mSHARED FOLDERS:[0m
+ -> If you want to use shared folders (bidirectional) with
+    your system ... use an LLM to guide you.
+
+[1;36m==========================================================[0m
+Ubuntu 24.04 LTS \n \l
+

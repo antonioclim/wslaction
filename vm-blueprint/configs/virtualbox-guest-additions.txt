@@ -1,0 +1,9 @@
+=== VBoxGuest Module ===
+vboxsf                 45056  1
+vboxguest              57344  2 vboxsf
+
+=== VBox Version ===
+7.0.16_Ubuntur162802
+
+=== vboxsf Group ===
+vboxsf:x:110:stud

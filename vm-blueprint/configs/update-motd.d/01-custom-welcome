@@ -1,0 +1,21 @@
+#!/bin/sh
+CYAN='\033[1;36m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+RED='\033[1;31m'
+NC='\033[0m'
+
+echo ""
+echo -e "${CYAN}==========================================================${NC}"
+echo -e "${CYAN}       SUCCESS! YOU ARE INSIDE THE MININET VM.            ${NC}"
+echo -e "${CYAN}==========================================================${NC}"
+echo ""
+echo -e "${YELLOW}QUICK TIPS:${NC}"
+echo -e " -> Type ${GREEN}tldr <command>${NC} for examples (better than man)."
+echo -e " -> Editor: ${GREEN}nano${NC} is default (vi/vim are aliased to nano)."
+echo -e " -> Python: ${GREEN}os-ken, grpc, scapy${NC} are pre-installed in venv."
+echo ""
+echo -e "${RED}SHARED FOLDERS:${NC}"
+echo " -> If you want to use shared folders (bidirectional) with"
+echo "    your system ... use an LLM to guide you."
+echo ""
