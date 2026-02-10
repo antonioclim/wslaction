@@ -1,0 +1,153 @@
+name: Build WSL2 SDN Kernel
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      kernel_branch:
+        description: 'WSL2 kernel branch (e.g. linux-msft-wsl-6.6.y)'
+        required: true
+        default: 'linux-msft-wsl-6.6.y'
+
+env:
+  KERNEL_BRANCH: ${{ github.event.inputs.kernel_branch || 'linux-msft-wsl-6.6.y' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            build-essential flex bison dwarves libssl-dev libelf-dev \
+            libncurses-dev bc python3 cpio git
+
+      - name: Clone WSL2 kernel source
+        run: |
+          git clone --depth=1 -b "$KERNEL_BRANCH" \
+            https://github.com/microsoft/WSL2-Linux-Kernel.git kernel
+
+      - name: Configure kernel with SDN modules
+        working-directory: kernel
+        run: |
+          cp Microsoft/config-wsl .config
+
+          # Open vSwitch
+          scripts/config --module CONFIG_OPENVSWITCH
+          scripts/config --module CONFIG_OPENVSWITCH_GRE
+          scripts/config --module CONFIG_OPENVSWITCH_VXLAN
+          scripts/config --module CONFIG_OPENVSWITCH_GENEVE
+
+          # QoS schedulers (Mininet bandwidth)
+          scripts/config --module CONFIG_NET_SCH_HTB
+          scripts/config --module CONFIG_NET_SCH_NETEM
+          scripts/config --module CONFIG_NET_SCH_HFSC
+          scripts/config --module CONFIG_NET_SCH_TBF
+          scripts/config --module CONFIG_NET_SCH_RED
+          scripts/config --module CONFIG_NET_SCH_SFQ
+          scripts/config --module CONFIG_NET_SCH_PRIO
+          scripts/config --module CONFIG_NET_SCH_INGRESS
+
+          # Tunnel / encapsulation
+          scripts/config --module CONFIG_VXLAN
+          scripts/config --module CONFIG_GENEVE
+          scripts/config --enable CONFIG_NET_IPGRE
+          scripts/config --module CONFIG_NET_IPGRE_DEMUX
+
+          # Bridge, VETH, namespaces
+          scripts/config --module CONFIG_BRIDGE
+          scripts/config --enable CONFIG_BRIDGE_NETFILTER
+          scripts/config --enable CONFIG_VETH
+          scripts/config --enable CONFIG_NET_NS
+          scripts/config --enable CONFIG_NAMESPACES
+
+          # nf/iptables (Docker + firewall labs)
+          scripts/config --module CONFIG_NF_TABLES
+          scripts/config --module CONFIG_NFT_NAT
+          scripts/config --module CONFIG_NFT_MASQ
+          scripts/config --module CONFIG_NF_NAT
+          scripts/config --module CONFIG_NF_CONNTRACK
+
+          # VLAN, dummy, macvlan, bonding
+          scripts/config --module CONFIG_VLAN_8021Q
+          scripts/config --module CONFIG_DUMMY
+          scripts/config --module CONFIG_MACVLAN
+          scripts/config --module CONFIG_IPVLAN
+          scripts/config --module CONFIG_BONDING
+          scripts/config --module CONFIG_NET_TEAM
+
+          yes "" | make oldconfig 2>&1 | tail -10
+
+      - name: Compile kernel
+        working-directory: kernel
+        run: |
+          make -j$(nproc)
+          echo "KERNEL_VERSION=$(make kernelrelease)" >> $GITHUB_ENV
+
+      - name: Install modules to staging
+        working-directory: kernel
+        run: |
+          make modules_install INSTALL_MOD_PATH=${{ github.workspace }}/staging
+
+      - name: Package release archive
+        run: |
+          KVER="${{ env.KERNEL_VERSION }}"
+          ARCHIVE="wsl2-sdn-kernel-${KVER}.tar.gz"
+
+          mkdir -p package
+
+          # bzImage (the kernel itself)
+          cp kernel/arch/x86/boot/bzImage package/bzImage
+
+          # Modules (strip debug symbols to reduce size)
+          cp -a staging/lib/modules package/modules
+          find package/modules -name '*.ko' -exec strip --strip-debug {} \;
+
+          # Kernel version marker (used by install script)
+          echo "$KVER" > package/KERNEL_VERSION
+
+          # .config for reference
+          cp kernel/.config package/config-wsl-sdn
+
+          tar czf "$ARCHIVE" -C package .
+          echo "ARCHIVE=$ARCHIVE" >> $GITHUB_ENV
+          echo "KVER=$KVER" >> $GITHUB_ENV
+          ls -lh "$ARCHIVE"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wsl2-sdn-kernel-${{ env.KVER }}
+          path: ${{ env.ARCHIVE }}
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ARCHIVE }}
+          body: |
+            ## WSL2 SDN Kernel ${{ env.KVER }}
+
+            Pre-compiled WSL2 kernel with Open vSwitch, QoS schedulers,
+            and networking modules for Mininet/SDN labs.
+
+            **Source:** `microsoft/WSL2-Linux-Kernel` branch `${{ env.KERNEL_BRANCH }}`
+
+            ### Quick install
+            ```powershell
+            powershell -ExecutionPolicy Bypass -File .\setup-mininet-wsl2.ps1
+            ```
+
+            ### Included modules
+            openvswitch (+GRE/VXLAN/Geneve), HTB, NETEM, HFSC, TBF, RED,
+            SFQ, PRIO, INGRESS, bridge, VETH, VLAN 802.1Q, nftables, NAT,
+            dummy, macvlan, ipvlan, bonding, team
+          generate_release_notes: true
