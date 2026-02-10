@@ -1,0 +1,6 @@
+=== Python System ===
+Python 3.12.3
+/usr/bin/python3
+
+=== Pip System ===
+pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)

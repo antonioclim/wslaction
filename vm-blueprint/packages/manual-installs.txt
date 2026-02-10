@@ -1,0 +1,34 @@
+=== /usr/local/bin ===
+total 36
+drwxr-xr-x  2 root root 4096 Feb 10 14:09 .
+drwxr-xr-x 10 root root 4096 Aug  5  2025 ..
+-rwxr-xr-x  1 root root   45 Feb 10 14:09 docker-compose
+lrwxrwxrwx  1 root root   27 Feb  8 10:31 nikto -> /opt/nikto/program/nikto.pl
+-rwxr-xr-x  1 root root  220 Feb  8 09:20 oslo-config-generator
+-rwxr-xr-x  1 root root  220 Feb  8 09:20 oslo-config-validator
+-rwxr-xr-x  1 root root  211 Feb  8 09:18 pbr
+-rwxr-xr-x  1 root root  215 Feb  8 09:20 ryu
+-rwxr-xr-x  1 root root  214 Feb  8 09:20 ryu-manager
+-rwxr-xr-x  1 root root  217 Feb  8 09:17 scapy
+
+=== /usr/local/sbin ===
+total 8
+drwxr-xr-x  2 root root 4096 Aug  5  2025 .
+drwxr-xr-x 10 root root 4096 Aug  5  2025 ..
+
+=== /opt ===
+total 16
+drwxr-xr-x  4 root root 4096 Feb  8 10:43 .
+drwxr-xr-x 22 root root 4096 Feb 10 10:44 ..
+drwx--x--x  4 root root 4096 Feb  8 10:18 containerd
+drwxr-xr-x  7 root root 4096 Feb  8 10:24 nikto
+
+=== Binare non-dpkg în /usr/local/bin ===
+/usr/local/bin/docker-compose (manual install)
+/usr/local/bin/nikto (manual install)
+/usr/local/bin/oslo-config-generator (manual install)
+/usr/local/bin/oslo-config-validator (manual install)
+/usr/local/bin/pbr (manual install)
+/usr/local/bin/ryu (manual install)
+/usr/local/bin/ryu-manager (manual install)
+/usr/local/bin/scapy (manual install)
