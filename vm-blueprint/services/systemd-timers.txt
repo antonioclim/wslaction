@@ -1,0 +1,11 @@
+NEXT                            LEFT LAST                              PASSED UNIT                         ACTIVATES
+Tue 2026-02-10 19:49:42 UTC 1h 30min Tue 2026-02-10 08:31:05 UTC            - motd-news.timer              motd-news.service
+Tue 2026-02-10 20:15:14 UTC 1h 55min Tue 2026-02-10 10:16:28 UTC            - apt-daily.timer              apt-daily.service
+Wed 2026-02-11 00:00:00 UTC 5h 40min Tue 2026-02-10 08:19:22 UTC            - dpkg-db-backup.timer         dpkg-db-backup.service
+Wed 2026-02-11 06:12:56 UTC      11h Tue 2026-02-10 09:07:55 UTC            - apt-daily-upgrade.timer      apt-daily-upgrade.service
+Wed 2026-02-11 18:15:51 UTC      23h Tue 2026-02-10 18:15:51 UTC 3min 33s ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Sun 2026-02-15 03:10:18 UTC   4 days Sun 2026-02-08 08:55:46 UTC            - e2scrub_all.timer            e2scrub_all.service
+Mon 2026-02-16 00:24:12 UTC   5 days Tue 2026-02-10 08:26:37 UTC            - fstrim.timer                 fstrim.service
+-                                  - -                                      - apport-autoreport.timer      apport-autoreport.service
+
+8 timers listed.

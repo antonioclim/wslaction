@@ -1,0 +1,28 @@
+[Unit]
+# https://docs.cloud-init.io/en/latest/explanation/boot.html
+Description=Cloud-init: Local Stage (pre-network)
+DefaultDependencies=no
+Wants=network-pre.target
+After=hv_kvp_daemon.service
+After=systemd-remount-fs.service
+Before=auditd.service
+Before=network-pre.target
+Before=shutdown.target
+Before=sysinit.target
+Conflicts=shutdown.target
+RequiresMountsFor=/var/lib/cloud
+ConditionPathExists=!/etc/cloud/cloud-init.disabled
+ConditionKernelCommandLine=!cloud-init=disabled
+ConditionEnvironment=!KERNEL_CMDLINE=cloud-init=disabled
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cloud-init init --local
+RemainAfterExit=yes
+TimeoutSec=0
+
+# Output needs to appear in instance console output
+StandardOutput=journal+console
+
+[Install]
+WantedBy=cloud-init.target

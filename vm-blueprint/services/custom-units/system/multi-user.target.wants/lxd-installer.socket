@@ -1,0 +1,12 @@
+[Unit]
+Description=Helper to install lxd snap on demand
+
+[Socket]
+ListenStream=/run/lxd-installer.socket
+SocketUser=root
+SocketGroup=lxd
+SocketMode=0660
+Accept=true
+
+[Install]
+WantedBy=multi-user.target
